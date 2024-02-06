@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Input Form</title>
+  <!-- Add Bootstrap CSS link -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-3">
+  <form id="skillForm">
+    <div class="form-group" id="skillRow">
+      <label for="skill">Skill:</label>
+      <div class="input-group">
+        <input type="text" class="form-control" name="skill" placeholder="Enter skill">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" onclick="addSkillForm()">Add</button>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-danger" type="button" onclick="removeSkillForm()">Remove</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function addSkillForm() {
+    // Get the form element
+    var form = document.getElementById('skillForm');
+
+    // Clone the existing row
+    var clonedRow = form.firstElementChild.cloneNode(true);
+
+    // Clear the value of the cloned input field
+    clonedRow.querySelector('input').value = '';
+
+    // Append the cloned row to the form
+    form.appendChild(clonedRow);
+  }
+
+  function removeSkillForm() {
+    // Get the form element
+    var form = document.getElementById('skillForm');
+
+    // Check if there is more than one row before removing
+    if (form.childElementCount > 1) {
+      // Remove the last row
+      form.removeChild(form.lastElementChild);
+    }
+  }
+</script>
+
+<!-- Add Bootstrap JS and Popper.js scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
